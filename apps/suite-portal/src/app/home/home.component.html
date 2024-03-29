@@ -8,42 +8,54 @@
       </mat-card-header>
 
       <mat-card-content>
-        <form class="maint-form">
+        <form
+          class="maint-form"
+          [formGroup]="maintenanceRequestForm"
+          (ngSubmit)="onSubmit()"
+        >
           <mat-form-field>
-            <mat-label>Apartment Unit #</mat-label>
-            <input matInput type="text" />
+            <mat-label for="unitNumber">Apartment Unit #</mat-label>
+            <input matInput type="text" formControlName="unitNumber" />
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Requester Name</mat-label>
-            <input matInput type="text" />
+            <mat-label for="name">Requester Name</mat-label>
+            <input matInput type="text" formControlName="name" />
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Requester Email</mat-label>
-            <input matInput type="email" />
+            <mat-label for="email">Requester Email</mat-label>
+            <input matInput type="email" formControlName="email" />
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Service Type</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let serviceType of serviceTypes" [value]="serviceType">
-                {{serviceType}}
+            <mat-label for="serviceType">Service Type</mat-label>
+            <mat-select formControlName="serviceType">
+              <mat-option
+                *ngFor="let serviceType of serviceTypes"
+                [value]="serviceType"
+              >
+                {{ serviceType }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Summary</mat-label>
-            <input matInput type="text" />
+            <mat-label for="summary">Summary</mat-label>
+            <input matInput type="text" formControlName="summary" />
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Details</mat-label>
-            <textarea matInput></textarea>
+            <mat-label for="details">Details</mat-label>
+            <textarea matInput formControlName="details"></textarea>
           </mat-form-field>
 
-          <button mat-raised-button color="accent">
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="maintenanceRequestForm.invalid"
+          >
             Submit
           </button>
         </form>
