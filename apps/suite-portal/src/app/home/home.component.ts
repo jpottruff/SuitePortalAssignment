@@ -4,6 +4,7 @@ import {
   ALL_SERVICE_TYPES,
   MaintenanceRequest,
 } from '@suiteportal/api-interfaces';
+import { MaintenanceRequestService } from '../services/maintenance-request.service';
 
 @Component({
   selector: 'pm-home',
@@ -15,9 +16,10 @@ export class HomeComponent implements OnInit {
 
   maintenanceRequestForm: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {
-    //
-  }
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly maintenanceRequestService: MaintenanceRequestService
+  ) {}
 
   ngOnInit(): void {
     this.maintenanceRequestForm = this.initializeForm();
@@ -34,9 +36,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const req: MaintenanceRequest = this.maintenanceRequestForm.value;
-    // TODO - send to api
-    console.log(req);
+    this.maintenanceRequestService.submitRequest(req);
   }
 }
