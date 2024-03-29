@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -31,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
   ],
   exports: [
+    ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
