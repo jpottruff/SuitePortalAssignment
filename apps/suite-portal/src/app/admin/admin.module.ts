@@ -3,12 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RequestListComponent } from './request-list/request-list.component';
 
-
-
 @NgModule({
   declarations: [LoginComponent, RequestListComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [LoginComponent, RequestListComponent],
 })
-export class AdminModule { }
+export class AdminModule {}
