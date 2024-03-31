@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MaintenanceRequest } from '@suiteportal/api-interfaces';
 import { Observable } from 'rxjs';
 import { MaintenanceRequestService } from '../../services/maintenance-request.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestDialogComponent } from '../request-dialog/request-dialog.component';
 
 @Component({
   selector: 'sp-request-list',
@@ -10,7 +12,8 @@ import { MaintenanceRequestService } from '../../services/maintenance-request.se
 })
 export class RequestListComponent implements OnInit {
   constructor(
-    private readonly maintenanceRequestService: MaintenanceRequestService
+    private readonly maintenanceRequestService: MaintenanceRequestService,
+    public dialog: MatDialog
   ) {}
   requests$: Observable<MaintenanceRequest[]>;
   /** Controls order of displayed headings in table */
@@ -26,7 +29,11 @@ export class RequestListComponent implements OnInit {
     this.requests$ = this.maintenanceRequestService.getRequestList();
   }
 
-  onRowClick(data: MaintenanceRequest) {
-    console.log(data);
+  openDialog(data: MaintenanceRequest) {
+    const dialogRef = this.dialog.open(RequestDialogComponent, { data });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }
