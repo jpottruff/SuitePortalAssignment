@@ -14,9 +14,10 @@ export class MaintenanceRequestService {
   }
 
   submitRequest(request: MaintenanceRequest) {
-    const url = `${this.API_ENDPOINT}/maintenance-requests`;
-    console.log(url, request);
-    // TODO - hook up backend
-    // this.http.post(url, request);
+    const url = `${this.API_ENDPOINT}`;
+    this.http.post(url, request).subscribe((res) => {
+      // TODO -  handling
+      console.log(res);
+    });
   }
 }
