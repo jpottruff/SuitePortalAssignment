@@ -12,9 +12,21 @@ export class RequestListComponent implements OnInit {
   constructor(
     private readonly maintenanceRequestService: MaintenanceRequestService
   ) {}
-
   requests$: Observable<MaintenanceRequest[]>;
+  /** Controls order of displayed headings in table */
+  displayedColumns: string[] = [
+    'status',
+    'serviceType',
+    'unitNumber',
+    'name',
+    'email',
+  ];
+
   ngOnInit(): void {
     this.requests$ = this.maintenanceRequestService.getRequestList();
+  }
+
+  onRowClick(data: MaintenanceRequest) {
+    console.log(data);
   }
 }
