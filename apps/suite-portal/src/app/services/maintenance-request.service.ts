@@ -14,10 +14,9 @@ export class MaintenanceRequestService {
     return `${environment.apiUrl}/maintenance-requests`;
   }
 
-  submitRequest(request: MaintenanceRequest): void {
+  submitRequest(request: MaintenanceRequest): Observable<{ id: string }> {
     const url = `${this.API_ENDPOINT}`;
-    // TODO -  handling
-    this.http.post(url, request).subscribe((res) => console.log(res));
+    return this.http.post<{ id: string }>(url, request);
   }
 
   getRequestList(): Observable<MaintenanceRequest[]> {
