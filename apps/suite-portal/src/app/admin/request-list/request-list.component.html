@@ -7,10 +7,6 @@
     <th mat-header-cell *matHeaderCellDef>Email</th>
     <td mat-cell *matCellDef="let element">{{ element.email }}</td>
   </ng-container>
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
-    <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-  </ng-container>
   <ng-container matColumnDef="unitNumber">
     <th mat-header-cell *matHeaderCellDef>Unit</th>
     <td mat-cell *matCellDef="let element">{{ element.unitNumber }}</td>
@@ -18,6 +14,12 @@
   <ng-container matColumnDef="serviceType">
     <th mat-header-cell *matHeaderCellDef>Service Type</th>
     <td mat-cell *matCellDef="let element">{{ element.serviceType }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.isClosed ? 'CLOSED' : 'OPEN' }}
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
