@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginRequest } from '@suiteportal/api-interfaces';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'sp-login',
@@ -14,18 +13,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly authService: AuthService,
-    private readonly route: ActivatedRoute
+    private readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe({
-      next: (paramMap: ParamMap) => {
-        if (paramMap.has('authFailed')) {
-          this.loginForm = this.initializeForm();
-        }
-      },
-      error: (err) => console.error(err),
+    this.authService.getAuthStatusListener().subscribe((isAuthorized) => {
+      if (!isAuthorized) {
+        // NOTE: reset() will cause Validators to be 'invalid' if the form has already submitted
+        this.loginForm.reset();
+      }
     });
 
     this.loginForm = this.initializeForm();

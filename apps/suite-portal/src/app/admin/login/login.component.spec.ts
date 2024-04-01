@@ -9,8 +9,7 @@ import { FormBuilder } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../services/auth.service';
 import { SharedModule } from '../../shared.module';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { MOCK_AUTH_SERVICE } from '../../services/__mocks__/service.mocks';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -30,13 +29,7 @@ describe('LoginComponent', () => {
       declarations: [LoginComponent],
       providers: [
         FormBuilder,
-        { provide: AuthService, useValue: {} },
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            queryParamMap: of({}),
-          },
-        },
+        { provide: AuthService, useValue: MOCK_AUTH_SERVICE },
       ],
     }).compileComponents();
   });
