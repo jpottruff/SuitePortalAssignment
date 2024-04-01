@@ -14,7 +14,7 @@ export class AuthService {
     private readonly router: Router
   ) {}
   private _isAuthenticated = false;
-  private _token;
+  private _token = undefined;
   private _authStatusListener = new Subject<boolean>();
 
   get API_ENDPOINT(): string {
