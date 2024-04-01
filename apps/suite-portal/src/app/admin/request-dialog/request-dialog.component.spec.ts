@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RequestDialogComponent } from './request-dialog.component';
+import { SharedModule } from '../../shared.module';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 describe('RequestDialogComponent', () => {
   let component: RequestDialogComponent;
@@ -8,9 +10,13 @@ describe('RequestDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RequestDialogComponent ]
-    })
-    .compileComponents();
+      imports: [SharedModule],
+      declarations: [RequestDialogComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
