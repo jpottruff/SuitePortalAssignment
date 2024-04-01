@@ -5,6 +5,7 @@ import { HomeModule } from './home/home.module';
 import { RequestListComponent } from './admin/request-list/request-list.component';
 import { LoginComponent } from './admin/login/login.component';
 import { AdminModule } from './admin/admin.module';
+import { CanActivateAdminGuard } from './guards/can-activate-admin.guard';
 
 const routes: Routes = [
   {
@@ -12,12 +13,13 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: 'admin',
     component: RequestListComponent,
+    canActivate: [CanActivateAdminGuard],
+  },
+  {
+    path: 'admin/login',
+    component: LoginComponent,
   },
   {
     path: '**',
