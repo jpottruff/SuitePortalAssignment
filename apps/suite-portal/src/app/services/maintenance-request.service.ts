@@ -14,16 +14,20 @@ export class MaintenanceRequestService {
     return `${environment.apiUrl}/maintenance-requests`;
   }
 
-  submitRequest(request: MaintenanceRequest) {
+  submitRequest(request: MaintenanceRequest): void {
     const url = `${this.API_ENDPOINT}`;
-    this.http.post(url, request).subscribe((res) => {
-      // TODO -  handling
-      console.log(res);
-    });
+    // TODO -  handling
+    this.http.post(url, request).subscribe((res) => console.log(res));
   }
 
   getRequestList(): Observable<MaintenanceRequest[]> {
     const url = `${this.API_ENDPOINT}`;
     return this.http.get<MaintenanceRequest[]>(url);
+  }
+
+  closeRequest(id: string): void {
+    const url = `${this.API_ENDPOINT}/${id}/close`;
+    // TODO - handling
+    this.http.put(url, {}).subscribe((res) => console.log(res));
   }
 }

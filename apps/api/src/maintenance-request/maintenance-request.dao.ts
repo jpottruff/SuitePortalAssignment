@@ -44,6 +44,14 @@ export class MaintenanceRequestDao {
     return await this.collection.find({ id }).value();
   }
 
+  async closeMaintenanceRequest(id: string): Promise<MaintenanceRequestDB> {
+    return await this.collection
+      .chain()
+      .find({ id })
+      .assign({ isClosed: true })
+      .write();
+  }
+
   async getAllMaintenanceRequests(): Promise<MaintenanceRequest[]> {
     return await this.collection.value();
   }

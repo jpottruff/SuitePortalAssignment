@@ -6,13 +6,15 @@ export enum ServiceType {
 }
 
 export const ALL_SERVICE_TYPES = [
-  ServiceType.Electrical ,
-  ServiceType.General ,
-  ServiceType.PestControl ,
-  ServiceType.Plumbing ,
+  ServiceType.Electrical,
+  ServiceType.General,
+  ServiceType.PestControl,
+  ServiceType.Plumbing,
 ];
 
 export interface MaintenanceRequest {
+  // id in the database
+  id?: string;
   // Name of the requester
   name: string;
   // Email of the requester
@@ -25,5 +27,6 @@ export interface MaintenanceRequest {
   summary: string;
   // Any extra details
   details?: string;
+  // The status of the maintenance request
+  isClosed?: boolean;
 }
-

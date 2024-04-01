@@ -32,8 +32,10 @@ export class RequestListComponent implements OnInit {
   openDialog(data: MaintenanceRequest) {
     const dialogRef = this.dialog.open(RequestDialogComponent, { data });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe((result: MaintenanceRequest) => {
+      if (result) {
+        this.maintenanceRequestService.closeRequest(result.id);
+      }
     });
   }
 }

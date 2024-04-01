@@ -16,4 +16,8 @@ export class RequestDialogComponent {
   onCancelClick(): void {
     this.dialogRef.close();
   }
+
+  onConfirmClick(): void {
+    this.dialogRef.close({ ...this.data, isClosed: true });
+  }
 }
