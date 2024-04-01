@@ -1,6 +1,25 @@
 <h1 mat-dialog-title>Maintenance Request</h1>
-<div mat-dialog-content>
-  {{ data | json }}
+<div mat-dialog-content class="mat-typography">
+  <section>
+    <h3>Customer Information</h3>
+    <div><span>Name:</span> {{ data.name }}</div>
+    <div><span>Email:</span> {{ data.email }}</div>
+    <div><span>Unit:</span> {{ data.unitNumber }}</div>
+  </section>
+  <mat-divider class="info-section-divider"></mat-divider>
+  <section>
+    <h3>Issue</h3>
+    <div>Service Type</div>
+    <p>{{ data.serviceType }}</p>
+
+    <div>Summary</div>
+    <p>{{ data.summary }}</p>
+
+    <ng-container *ngIf="data.details">
+      <div>Details</div>
+      <p>{{ data.details }}</p>
+    </ng-container>
+  </section>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Cancel</button>
