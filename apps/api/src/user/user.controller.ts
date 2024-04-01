@@ -1,6 +1,12 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  HttpCode,
+  Post,
+} from '@nestjs/common';
 import { UserService } from './user.service';
-import { LoginRequest } from '@suiteportal/api-interfaces';
+import { LoginRequest, LoginResponse } from '@suiteportal/api-interfaces';
 
 @Controller('user')
 export class UserController {
@@ -8,7 +14,9 @@ export class UserController {
     //
   }
   @Post('/login')
-  public async login(@Body() loginRequest: LoginRequest) {
+  public async login(
+    @Body() loginRequest: LoginRequest
+  ): Promise<LoginResponse> {
     if (!loginRequest?.username) {
       throw new BadRequestException('No username provided');
     }
