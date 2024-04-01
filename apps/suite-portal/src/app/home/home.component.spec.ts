@@ -1,20 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared.module';
 import { MaintenanceRequestService } from '../services/maintenance-request.service';
 
-describe.skip('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [BrowserAnimationsModule, SharedModule],
       declarations: [HomeComponent],
       providers: [
-        { provide: FormBuilder, useValue: {} },
+        FormBuilder,
         { provide: MaintenanceRequestService, useValue: {} },
       ],
     }).compileComponents();

@@ -4,8 +4,9 @@ import { RequestListComponent } from './request-list.component';
 import { SharedModule } from '../../shared.module';
 import { MaintenanceRequestService } from '../../services/maintenance-request.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MOCK_MAINTENANCE_REQUEST_SERVICE } from '../../services/__mocks__/service.mocks';
 
-describe.skip('RequestListComponent', () => {
+describe('RequestListComponent', () => {
   let component: RequestListComponent;
   let fixture: ComponentFixture<RequestListComponent>;
 
@@ -14,7 +15,10 @@ describe.skip('RequestListComponent', () => {
       imports: [SharedModule],
       declarations: [RequestListComponent],
       providers: [
-        { provide: MaintenanceRequestService, useValue: {} },
+        {
+          provide: MaintenanceRequestService,
+          useValue: MOCK_MAINTENANCE_REQUEST_SERVICE,
+        },
         { provide: MatDialog, useValue: {} },
       ],
     }).compileComponents();
