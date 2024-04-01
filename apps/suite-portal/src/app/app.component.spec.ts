@@ -23,7 +23,7 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('suite-portal');
   });
 
-  // TODO - this test may be stale. See if its still needed
+  // NOTE: this test may be stale. See if its still needed
   it.skip('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
