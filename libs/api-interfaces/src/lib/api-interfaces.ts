@@ -30,3 +30,8 @@ export interface MaintenanceRequest {
   // The status of the maintenance request
   isClosed?: boolean;
 }
+
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
