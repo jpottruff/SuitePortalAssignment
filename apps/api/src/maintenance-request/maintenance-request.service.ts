@@ -12,7 +12,7 @@ export class MaintenanceRequestService {
   }
 
   async getMaintenanceRequestList() {
-    return await this.maintReqDao.getAllMaintenanceRequests();
+    return await this.maintReqDao.getOpenMaintenanceRequests();
   }
 
   async createMaintenanceRequest(maintenanceRequest: MaintenanceRequest) {
