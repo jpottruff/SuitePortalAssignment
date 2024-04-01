@@ -24,9 +24,8 @@ export class MaintenanceRequestService {
     return this.http.get<MaintenanceRequest[]>(url);
   }
 
-  closeRequest(id: string): void {
+  closeRequest(id: string): Observable<MaintenanceRequest> {
     const url = `${this.API_ENDPOINT}/${id}/close`;
-    // TODO - handling
-    this.http.put(url, {}).subscribe((res) => console.log(res));
+    return this.http.put<MaintenanceRequest>(url, {});
   }
 }
