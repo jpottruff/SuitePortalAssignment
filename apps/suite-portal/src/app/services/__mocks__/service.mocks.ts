@@ -4,6 +4,7 @@ import { MaintenanceRequestService } from '../maintenance-request.service';
 
 export const MOCK_MAINTENANCE_REQUEST_SERVICE: Partial<MaintenanceRequestService> = {
   getRequestList: jest.fn(),
+  submitRequest: jest.fn().mockReturnValue(of({})),
 };
 
 export const MOCK_AUTH_SERVICE: Partial<AuthService> = {
