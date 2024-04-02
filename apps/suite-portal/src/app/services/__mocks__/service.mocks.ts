@@ -9,4 +9,5 @@ export const MOCK_MAINTENANCE_REQUEST_SERVICE: Partial<MaintenanceRequestService
 export const MOCK_AUTH_SERVICE: Partial<AuthService> = {
   getIsAuthorized: jest.fn(),
   getAuthStatusListener: jest.fn().mockReturnValue(of(false)),
+  login: jest.fn(),
 };
