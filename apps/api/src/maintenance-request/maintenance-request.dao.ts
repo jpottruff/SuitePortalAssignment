@@ -16,12 +16,14 @@ export interface MaintenanceRequestData {
 const adapter = new FileSync<MaintenanceRequestDB>('./db/maint-requests.json');
 const db = low(adapter);
 
-db.defaults({ requests: [] }).write();
+// TODO - dig into this type error
+(db as any).defaults({ requests: [] }).write();
 
 @Injectable()
 export class MaintenanceRequestDao {
   private get collection(): any {
-    return db.get('requests');
+    // TODO - dig into this type error
+    return (db as any).get('requests');
   }
 
   constructor() {
